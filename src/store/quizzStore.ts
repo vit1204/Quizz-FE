@@ -1,6 +1,6 @@
 import type { QuizQuestion, results } from "../types/quiz";
 import { create } from "zustand";
-import axios from "axios";
+import { startQuiz } from "../api/quizz";
 interface QuizState {
   questions: QuizQuestion[];
   sessionId: number;
@@ -23,9 +23,7 @@ export const useQuizStore = create<QuizState>((set) => ({
   fetchQuestions: async () => {
     set({ isLoading: true });
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/start-quizz`
-      );
+      const response = await startQuiz();
       set({
         questions: response.data.questions,
         sessionId: response.data.sessionId,

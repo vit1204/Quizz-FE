@@ -25,7 +25,6 @@ export default function QuestionList({
   isCorrect,
   correctAnswer,
 }: QuizScreenProps) {
-  // Find the key of the correct answer (if available)
   const correctAnswerKey = correctAnswer
     ? Object.entries(question.options).find(
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -89,7 +88,6 @@ export default function QuestionList({
                       {userAnswer && userAnswer.key === key && (
                         <span className="w-2.5 h-2.5 bg-white rounded-full"></span>
                       )}
-                      {/* Show checkmark for correct answer when user answered incorrectly */}
                       {isCorrect === false &&
                         correctAnswerKey === key &&
                         userAnswer?.key !== key && (
@@ -119,7 +117,7 @@ export default function QuestionList({
             disabled={!isAnswered}
             className={`w-full py-4 rounded-md font-medium transition-colors ${
               isAnswered
-                ? "bg-[#6b7280] hover:bg-[#4b5563] text-white"
+                ? "bg-[#17c526] hover:bg-[#4b5563] text-white"
                 : "bg-[#9ca3af] text-white cursor-not-allowed opacity-70"
             }`}
             type="button"
